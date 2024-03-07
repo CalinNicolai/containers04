@@ -140,6 +140,8 @@ RUN apt-get update && apt-get install -y supervisor && apt-get clean
 
 # add wordpress files to /var/www/html
 ADD https://wordpress.org/latest.tar.gz /var/www/html/
+RUN tar -xzf /var/www/html/latest.tar.gz -C /var/www/html/ && \
+    rm /var/www/html/latest.tar.gz
 
 # copy the configuration file for apache2 from files/ directory
 COPY files/apache2/000-default.conf /etc/apache2/sites-available/000-default.conf
